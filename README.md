@@ -17,7 +17,7 @@ To install it:
         require "da-js"
     
 ## Documentation
-For documentation please refer to the individual files in `lib/assets/javascripts/da-js`.
+For documentation please refer to the individual files in [`lib/assets/javascripts/da-js`](https://github.com/die-antwort/da-js/tree/master/lib/da-js).
 
 ## Development
 Use the Rack application in `features/support/testapp`:
@@ -29,4 +29,5 @@ Any template file in `features/support/testapp/views` can be accessed by its bas
     open http:://localhost:9292/form_change_tracker
     
 Run the tests with
+
     rake test
