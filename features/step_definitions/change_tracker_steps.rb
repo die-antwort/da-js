@@ -1,3 +1,9 @@
+RSpec::Matchers.define :be_marked_as_changed do 
+  match do |element|
+    element["class"].split(" ").include?("changed")   
+  end
+end
+
 def find_element_and_label(element)
   id = "#{@form}_#{element}"
   [find("##{@form} ##{id}"), find("##{@form} label[for='#{id}']")]
@@ -80,7 +86,7 @@ end
 Then /^no form element and label should be marked as changed$/ do
   within "##{@form}" do
     all("input,textarea,select,label").each do |element|
-      element["class"].should_not include("changed")
+      element.should_not be_marked_as_changed
     end
   end
 end
@@ -88,7 +94,7 @@ end
 Then /^no field container should be marked as changed$/ do
   within "##{@form}" do
     all(".field").each do |element|
-      element["class"].should_not include("changed")
+      element.should_not be_marked_as_changed
     end
   end
 end
@@ -97,11 +103,11 @@ Then /^the (first|second|third) radiobutton's form element and label should( not
   button = (which == "first" ? "1" : (which == "second" ? "2" : "3"))
   element, label = find_element_and_label("radiobutton_#{button}")
   if no_longer
-    element["class"].should_not include("changed")
-    label["class"].should_not include("changed")
+    element.should_not be_marked_as_changed
+    label.should_not be_marked_as_changed
   else
-    element["class"].should include("changed")
-    label["class"].should include("changed")
+    element.should be_marked_as_changed
+    label.should be_marked_as_changed
   end
 end
 
@@ -109,28 +115,28 @@ Then /^the (first|second|third) radiobutton's field container should( not| no lo
   button = (which == "first" ? "1" : (which == "second" ? "2" : "3"))
   container = find_container("radiobutton #{button}")
   if no_longer
-    container["class"].should_not include("changed")
+    container.should_not be_marked_as_changed
   else
-    container["class"].should include("changed")
+    container.should be_marked_as_changed
   end
 end
 
 Then /^the (\w+)'s form element and label should( no longer)? be marked as changed$/ do |element, no_longer|
   element, label = find_element_and_label(element)
   if no_longer
-    element["class"].should_not include("changed")
-    label["class"].should_not include("changed")
+    element.should_not be_marked_as_changed
+    label.should_not be_marked_as_changed
   else
-    element["class"].should include("changed")
-    label["class"].should include("changed")
+    element.should be_marked_as_changed
+    label.should be_marked_as_changed
   end
 end
 
 Then /^the (\w+)'s field container should( no longer)? be marked as changed$/ do |element, no_longer|
   container = find_container(element)
   if no_longer
-    container["class"].should_not include("changed")
+    container.should_not be_marked_as_changed
   else
-    container["class"].should include("changed")
+    container.should be_marked_as_changed
   end
 end
