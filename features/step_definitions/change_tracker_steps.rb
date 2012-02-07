@@ -4,7 +4,15 @@ def find_element_and_label(element)
 end
 
 def find_container(element)
-  find(:xpath, "//form[@id='#{@form}']//div[contains(@class, 'field')][*[@id='#{@form}_#{element}']]")
+  container = case @form
+    when /^scaffold_form/ then "div[contains(@class, 'field')]"
+    when /^formtastic/    then "li[contains(@class, 'input')]"
+    else raise "I don't know about '#{@form}' forms ..."
+    end
+  within "##{@form}" do
+    element_id = find_field(element)["id"]
+    find :xpath, ".//#{container}[.//*[@id='#{element_id}']]"
+  end
 end
 
 Given /^an? (empty|prefilled) (\w+)$/ do |type, form|
@@ -99,7 +107,7 @@ end
 
 Then /^the (first|second|third) radiobutton's field container should( not| no longer)? be marked as changed$/ do |which, no_longer|
   button = (which == "first" ? "1" : (which == "second" ? "2" : "3"))
-  container = find_container("radiobutton_#{button}")
+  container = find_container("radiobutton #{button}")
   if no_longer
     container["class"].should_not include("changed")
   else

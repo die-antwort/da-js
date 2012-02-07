@@ -37,6 +37,7 @@ Feature: Change tracker for forms
       | Form          | Element                |
       | simple_form   | form element and label |
       | scaffold_form | field container        |
+      | formtastic    | field container        |
 
   
   Scenario: Radiobuttons in an empty simple form
@@ -92,6 +93,7 @@ Feature: Change tracker for forms
       | Form          | Element                |
       | simple_form   | form element and label |
       | scaffold_form | field container        |
+      | formtastic    | field container        |
 
 
   Scenario: Radiobuttons in an prefilled simple form
@@ -107,8 +109,8 @@ Feature: Change tracker for forms
     Then no form element and label should be marked as changed    
 
      
-  Scenario: Radiobuttons in an prefilled scaffold form
-    Given an prefilled scaffold_form
+  Scenario Outline: Radiobuttons in an prefilled form
+    Given an prefilled <Form>
     Then no form element and label should be marked as changed
     
     When I choose the second radiobutton
@@ -116,4 +118,8 @@ Feature: Change tracker for forms
 
     When I choose the first radiobutton
     Then no form element and label should be marked as changed
-  
+
+    Examples:
+      | Form          |
+      | scaffold_form |
+      | formtastic    |
