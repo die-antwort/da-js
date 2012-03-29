@@ -1,5 +1,6 @@
 require "sinatra"
 require "sinatra/reloader" if development?
+require "coffee_script"
 
 set :app_file, __FILE__
 

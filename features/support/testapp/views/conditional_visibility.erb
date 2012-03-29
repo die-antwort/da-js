@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test</title>
+    <%= "<script src='../vendor/jquery-#{@jquery_version}.js'></script>" %>
+    <script src="/assets/javascripts/da-js.js"></script>
+    <script>$.fx.off = true;</script>
+  </head>
+  <body>
+    <h1>Test: Conditional Visibility</h1>
+    <form id="simple_form" action="">
+      <div class="field">
+        <label for="country">Country</label>
+        <select id="country">
+          <option></option>
+          <option>Austria</option>
+          <option>Other …</option>
+        </select>
+      </div>
+      <div class="field" data-visible-if="$('#country option:last').is(':selected')">
+        <label for="country_other">Other Country</label>
+        <input id="country_other">
+      </div>
+      <div class="field">
+        <label for="message_checkbox">I want to leave a message</label>
+        <input type="checkbox" id="message_checkbox" checked>
+      </div>
+      <div class="field" data-visible-if="$('#message_checkbox')[0].checked">
+        <label for="message">Message</label>
+        <textarea id="message"></textarea>
+      </div>
+
+    </form>
+
+    <script>
+      $("form").conditionalVisibility();
+    </script>
+
+
+  </body>
+</html>
