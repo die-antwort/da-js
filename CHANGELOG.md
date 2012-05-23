@@ -1,5 +1,8 @@
+## Devel
+* Add $.fn.numericValue().
+
 ## Version 0.1.0
-* Add conditionalVisibility().
+* Add $.fn.conditionalVisibility().
 * Now requires CoffeeScript.
 
 ## Version 0.0.2
