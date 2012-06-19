@@ -49,3 +49,12 @@ Feature: Numeric value of input elements
       | $123.45  | 123.45  |
       | $$ 3     | 0       |
       | €$ 7     | 0       |
+      
+  Scenario Outline: Using `nullOnError`
+    When I fill in "textfield" with "<String>"
+    Then the numeric value (using `nullOnError: true`) of "textfield" should be "<Value>"
+    Examples:
+      | String   | Value   |
+      | 1,234    | 1234    |
+      | abc      | null    |
+      | € 5      | null    |
