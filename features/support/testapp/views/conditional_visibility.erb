@@ -29,11 +29,16 @@
         <label for="message">Message</label>
         <textarea id="message"></textarea>
       </div>
-
+      
+      <div class="field">
+        <label for="amount">Amount</label>
+        <input type="string" id="amount">
+        <span id="amount_info" data-visible-if="$('#amount').val() != ''">You’ve entered something!</span>
+      </div>
     </form>
 
     <script>
-      $("form").conditionalVisibility();
+      $("form").conditionalVisibility(<%= params[:options] %>);
     </script>
 
 

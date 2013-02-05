@@ -26,4 +26,17 @@ Feature: Conditional visibility for elements
     
     When I trigger the "updateVisibilities" event on the form
     Then the "Message" input should be hidden
+
+
+  Scenario: Manually configuring events triggering visibility re-calculations
+    # Assert default behaviour first
+    When I enter "foo" in the "amount" field
+    Then the "#amount_info" element should be hidden
+    When I blur the "amount" field
+    Then the "#amount_info" element should be visible
+    
+    Given I visit the test page for "conditional visibility" with options "{events: 'keypress'}"
+    Then the "#amount_info" element should be hidden
+    When I enter "foo" in the "amount" field
+    Then the "#amount_info" element should be visible
     
