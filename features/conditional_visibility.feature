@@ -40,3 +40,16 @@ Feature: Conditional visibility for elements
     When I enter "foo" in the "amount" field
     Then the "#amount_info" element should be visible
     
+    
+  Scenario: Using the triggered events
+    Given I bind an event listener to "shown.conditionalVisibility"
+    And I bind an event listener to "hidden.conditionalVisibility"
+    When I select "Other …" from the "Country" select
+    Then the event listener for "shown.conditionalVisibility" should have been called "1" time
+    And the event listener for "hidden.conditionalVisibility" should have been called "0" times
+    When I select "Austria" from the "Country" select
+    Then the event listener for "shown.conditionalVisibility" should have been called "1" times
+    And the event listener for "hidden.conditionalVisibility" should have been called "1" times
+    
+    
+    

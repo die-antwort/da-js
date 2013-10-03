@@ -1,3 +1,16 @@
+Given %r{^I bind an event listener to "([^"]*)"$} do |event|
+  page.execute_script %{
+    if (!window.eventCounts) window.eventCounts = {};
+    window.eventCounts['#{event}'] = 0;
+    $('body').on('#{event}', function(){ window.eventCounts['#{event}']++ });
+  }
+end
+
+Then %r{^the event listener for "([^"]*)" should have been called "([^"]*)" times?$} do |event, counter|
+  actual = page.evaluate_script "window.eventCounts['#{event}']"
+  actual.should eq counter.to_i
+end
+
 Then %r{^the "([^"]*)" input should be hidden$} do |input|
   find_field(input, visible: false).should_not be_visible
 end
