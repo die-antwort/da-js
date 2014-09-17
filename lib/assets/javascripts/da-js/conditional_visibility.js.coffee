@@ -7,9 +7,13 @@
 #
 # Use `$("body").conditionalVisibility()` to enable the functionality for the whole document, 
 # or use a more specific selector to enable it only for some elements. 
+#
+# The following options can be specified when initializing the plugin:
 # 
-# Use `$(…).conditionalVisibility({events: "keypress click"})` to customize the events wich trigger 
-# re-evaluation of visibilites (defaults to "change focusout click").
+#   - `events`: The events which should trigger re-evaluation of visibilities (default: 
+#     `"change focusout click"`)
+#
+#   - `animate`: If elements should be shown/hidden using animations (default: `true`).
 # 
 # There are two ways to manually force re-evaluation of visibilities:
 #
@@ -28,24 +32,26 @@
 #     <input id="text" data-visible-if="$('#checkbox')[0].checked">
 #   </form>
 #   <script>
-#     $("#myform").conditionalVisibility()
+#     $("#myform").conditionalVisibility({events: "click change keypress"})
 #   </script>
 
 $.fn.conditionalVisibility = (options = {}) ->
+    defaults = 
+      animate: true
+      events: "change focusout click"
     
-    events = options.events || "change focusout click"
-    events += " updateVisibilities"
-    
+    options = $.extend({}, defaults, options)
+      
     updateVisibilities = (event) ->
       $(this).find("[data-visible-if]").each ->
         $this = $(this)
         if eval($this.data("visible-if"))
           if $this.is(":hidden")
-            $this.slideDown(100)
+            if options.animate then $this.slideDown(100) else $this.show()
             $this.promise().done -> $this.trigger("shown.conditionalVisibility")
         else 
           if $this.is(":visible")
-            $this.slideUp(100)
+            if options.animate then $this.slideUp(100) else $this.hide()
             $this.promise().done -> $this.trigger("hidden.conditionalVisibility")
     
     setVisibilities = (event) ->
@@ -53,6 +59,9 @@ $.fn.conditionalVisibility = (options = {}) ->
         $this = $(this)
         $this.toggle !!eval($this.data("visible-if"))
     
-    this.on(events, updateVisibilities).on("setVisibilities", setVisibilities).trigger("setVisibilities")
+    this
+      .on "#{options.events} updateVisibilities", updateVisibilities
+      .on "setVisibilities", setVisibilities
+      .trigger "setVisibilities"
 
   
