@@ -1,5 +1,5 @@
 Then /^the "([^"]*)" input should be hidden$/ do |input|
-  find_field(input).should_not be_visible
+  find_field(input, visible: false).should_not be_visible
 end
 
 Then /^the "([^"]*)" input should be visible$/ do |input|

@@ -3,6 +3,7 @@ require "sinatra/reloader" if development?
 require "coffee_script"
 
 set :app_file, __FILE__
+disable :logging
 
 before do
   @jquery_version = params[:jquery] || "1.7.1"

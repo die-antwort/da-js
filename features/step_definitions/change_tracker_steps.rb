@@ -1,6 +1,6 @@
 RSpec::Matchers.define :be_marked_as_changed do 
   match do |element|
-    element["class"].split(" ").include?("changed")   
+    (element["class"] || "").split(" ").include?("changed")   
   end
 end
 

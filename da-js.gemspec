@@ -18,14 +18,14 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "railties", ">= 3.1.0"
+  s.add_dependency "railties", ">= 3.1.0", "< 5"
   s.add_dependency "sprockets", "~> 2.0"
   s.add_dependency "coffee-script", "~> 2.2"
   
-  s.add_development_dependency "cucumber", ">= 1.1.4"
-  s.add_development_dependency "rspec-expectations", ">= 2.7.0"
-  s.add_development_dependency "sinatra"
+  s.add_development_dependency "cucumber", "~> 1.3"
+  s.add_development_dependency "rspec-expectations", "~> 2.7"
+  s.add_development_dependency "sinatra", "~> 1.4"
   s.add_development_dependency "sinatra-contrib"
-  s.add_development_dependency "capybara-webkit", ">= 0.11.0"
+  s.add_development_dependency "capybara-webkit", "~> 1.3"
   s.add_development_dependency "launchy"
 end
