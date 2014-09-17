@@ -6,7 +6,7 @@ set :app_file, __FILE__
 disable :logging
 
 before do
-  @jquery_version = params[:jquery] || "1.7.1"
+  @jquery_version = params[:jquery] || "1.11.1"
 end
 
 get "/vendor/:file" do |file|
