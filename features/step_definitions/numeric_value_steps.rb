@@ -2,6 +2,10 @@ Given %r{the HTML element has a lang attribute set to "([^"]*)"$} do |lang|
   page.execute_script("$('html').attr('lang', '#{lang}')")
 end
 
+Given %r{the element "([^"]*)" has a lang attribute set to "([^"]*)"$} do |id, lang|
+  page.execute_script("$('##{id}').attr('lang', '#{lang}')")
+end
+
 Then %r{^the numeric value of "([^"]*)" should be "([^"]*)"$} do |input, value|
   page.evaluate_script("$('##{input}').numericValue()").should be_within(0.0001).of value.to_f
 end

@@ -35,6 +35,12 @@ Feature: Numeric value of input elements
       | € 5      | 0       |
       |          | 0       |
 
+  Scenario: Locale specified on the input element directly
+    Given the HTML element has a lang attribute set to "de"
+    And the element "textfield" has a lang attribute set to "en"
+    When I fill in "textfield" with "1,234.56"
+    Then the numeric value of "textfield" should be "1234.56"
+
   Scenario: Reading value from non-input elements
     Then the numeric value of "non_input_element_english" should be "1234.56"
     Given the HTML element has a lang attribute set to "de"

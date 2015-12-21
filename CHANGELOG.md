@@ -1,3 +1,7 @@
+## Version 1.1.0
+## Numeric Value
+* The rules for deciding if “german” parsing rules should be used have changed: Instead of only looking at the `lang` attribute of the `<html>` element, now the first `lang` attribute found on the input element itself or any of its parent elements is considered. (This means, that the `lang` attribute of `<html>` will only be used if there are no intermediate elements with different `lang` attributes.)
+
 ## Version 1.0.0
 ### Conditional Visibility
 * Breaking: Option `skipAnimations` has been removed. To force re-evaluation of visibilities without animation (e.g. after the DOM has been modified), use `$(...).trigger("setVisibilities")` instead (this is already done automatically on `pageready`.)
