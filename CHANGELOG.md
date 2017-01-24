@@ -1,5 +1,8 @@
+## Version 1.1.1
+* Relax gem version requirement for Sprockets: Can now be used with Sprockets 3.
+
 ## Version 1.1.0
-## Numeric Value
+### Numeric Value
 * The rules for deciding if “german” parsing rules should be used have changed: Instead of only looking at the `lang` attribute of the `<html>` element, now the first `lang` attribute found on the input element itself or any of its parent elements is considered. (This means, that the `lang` attribute of `<html>` will only be used if there are no intermediate elements with different `lang` attributes.)
 
 ## Version 1.0.0
@@ -13,7 +16,7 @@
 
 ### Conditional Visibility
 * Make events triggering visibility re-calculation customizable.
-* After an element is shown / hidden, a `shown.conditionalVisibility` / `hidden.conditionalVisibility` event is triggered. 
+* After an element is shown / hidden, a `shown.conditionalVisibility` / `hidden.conditionalVisibility` event is triggered.
 
 
 ## Version 0.1.0

@@ -19,9 +19,9 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "railties", ">= 3.1.0", "< 5"
-  s.add_dependency "sprockets", "~> 2.0"
+  s.add_dependency "sprockets", ">= 2.0", "< 4"
   s.add_dependency "coffee-script", "~> 2.2"
-  
+
   s.add_development_dependency "cucumber", "~> 1.3"
   s.add_development_dependency "rspec-expectations", "~> 2.7"
   s.add_development_dependency "sinatra", "~> 1.4"
