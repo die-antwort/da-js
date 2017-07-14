@@ -1,3 +1,6 @@
+## Version 1.1.2
+* Relax gemspec version requirements: Can now be used with Rails 5.
+
 ## Version 1.1.1
 * Relax gem version requirement for Sprockets: Can now be used with Sprockets 3.
 
