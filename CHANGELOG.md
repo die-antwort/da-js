@@ -1,3 +1,7 @@
+## Version 1.2
+### Conditional Visibility
+* The current state of an element with conditional visibility can now be queried with `$(...).data('visible-if-state')`.
+
 ## Version 1.1.2
 * Relax gemspec version requirements: Can now be used with Rails 5.
 
