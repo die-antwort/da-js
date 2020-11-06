@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "railties", ">= 3.1.0", "< 6"
+  s.add_dependency "railties", ">= 3.1.0", "< 7"
   s.add_dependency "sprockets"
   s.add_dependency "coffee-script"
 
