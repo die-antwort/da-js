@@ -63,6 +63,7 @@ $.fn.conditionalVisibility = (options = {}) ->
           if $this.is(":visible")
             if options.animate then $this.slideUp(100) else $this.hide()
             $this.promise().done -> $this.trigger("hidden.conditionalVisibility")
+      $(this).trigger("updated.conditionalVisibility")
 
     setVisibilities = (event) ->
       $(this).find("[data-visible-if]").each ->
