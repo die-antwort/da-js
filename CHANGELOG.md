@@ -1,3 +1,7 @@
+## Version 1.3
+### Conditional Visibility
+* After visibility has been recalculated for all elememtn, a `updated.conditionalVisibility` event is triggered.
+
 ## Version 1.2.1
 * Relax gemspec version requirements: Can now be used with Rails 6.
 
