@@ -21,11 +21,4 @@ Gem::Specification.new do |s|
   s.add_dependency "railties", ">= 3.1.0"
   s.add_dependency "sprockets"
   s.add_dependency "coffee-script"
-
-  s.add_development_dependency "cucumber", "~> 1.3"
-  s.add_development_dependency "rspec-expectations", "~> 2.7"
-  s.add_development_dependency "sinatra", "~> 1.4"
-  s.add_development_dependency "sinatra-contrib"
-  s.add_development_dependency "capybara-webkit", "~> 1.3"
-  s.add_development_dependency "launchy"
 end
