@@ -5,6 +5,7 @@
 #
 # Options:
 #   ignoreCurrencySign: If true, values with leading currency signs (€, $) are considered numeric and parsed correctly.
+#   ignoreTrailingStrings: If true, values with trailing strings are considered numeric and parsed correctly.
 #   nullOnError: If true, null is returned (instead of 0) if the value is not numeric.
 
 $.fn.numericValue = (options = {}) ->
@@ -20,6 +21,7 @@ $.fn.numericValue = (options = {}) ->
   val = if $this.is(":input") then $this.val() else $this.text()
   val = delocalize(val, locale)
   val = val.replace(/^\s*[€$]\s*/, "") if options.ignoreCurrencySign
+  val = val.replace(/[^.\d]+$/, "") if options.ignoreTrailingStrings
   if $.isNumeric(val)
     parseFloat(val)
   else

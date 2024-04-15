@@ -1,3 +1,7 @@
+## Version 1.4
+### Numeric Value
+* New option `ignoreTrailingStrings` (default: `false`).
+
 ## Version 1.3
 ### Conditional Visibility
 * After visibility has been recalculated for all elememtn, a `updated.conditionalVisibility` event is triggered.
